@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bright Level English — Learn Smart. Speak Bright. Discover English courses and learning materials.">
+  <meta name="theme-color" content="#102b50">
+  <title>Bright Level English | Learn Smart. Speak Bright.</title>
+  <style>
+    :root {
+      --navy: #102b50;
+      --navy-2: #173c68;
+      --blue: #2366a5;
+      --gold: #f2c64b;
+      --gold-dark: #d9a923;
+      --ink: #17263a;
+      --muted: #637287;
+      --paper: #ffffff;
+      --soft: #f3f6fa;
+      --line: #e1e8f0;
+      --radius: 22px;
+      --shadow: 0 18px 50px rgba(16,43,80,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .topline { height: 5px; background: linear-gradient(90deg, var(--gold), #fff0b5, var(--gold)); }
+    header {
+      position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px); border-bottom: 1px solid rgba(225,232,240,.8);
+    }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .brand img { width: 58px; height: 58px; object-fit: contain; border-radius: 12px; }
+    .brand-name { color: var(--navy); font-weight: 850; letter-spacing: .04em; line-height: 1.15; }
+    .brand-tag { display: block; color: var(--muted); font-size: .75rem; font-weight: 600; letter-spacing: .08em; margin-top: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 27px; font-size: .92rem; font-weight: 650; color: #35465d; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta, .button {
+      display: inline-flex; justify-content: center; align-items: center; gap: 9px;
+      border: 0; border-radius: 999px; padding: 12px 20px; background: var(--gold);
+      color: var(--navy); font-weight: 800; cursor: pointer; transition: .2s ease;
+      box-shadow: 0 8px 20px rgba(217,169,35,.2);
+    }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); background: #ffd96a; }
+    .menu-button { display: none; border: 1px solid var(--line); background: white; border-radius: 12px; padding: 9px 12px; color: var(--navy); font-size: 1.2rem; }
+    .hero {
+      position: relative; overflow: hidden; color: white;
+      background: radial-gradient(circle at 82% 18%, rgba(64,124,183,.45), transparent 28%),
+                  linear-gradient(125deg, #0d2342 0%, #153b67 62%, #1b4c7d 100%);
+      padding: 92px 0 96px;
+    }
+    .hero:before, .hero:after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.11); border-radius: 50%; pointer-events: none; }
+    .hero:before { width: 540px; height: 540px; right: -130px; top: -250px; }
+    .hero:after { width: 390px; height: 390px; right: -55px; top: -175px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 55px; align-items: center; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--gold); text-transform: uppercase; font-weight: 800; font-size: .78rem; letter-spacing: .18em; }
+    .eyebrow:before { content: ""; width: 28px; height: 2px; background: var(--gold); }
+    h1 { margin: 20px 0 18px; font-size: clamp(2.7rem, 6vw, 5rem); line-height: .99; letter-spacing: -.055em; max-width: 720px; }
+    h1 span { color: var(--gold); }
+    .hero-copy { max-width: 570px; color: #dce7f4; font-size: 1.12rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .button.secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,.45); box-shadow: none; }
+    .button.secondary:hover { background: rgba(255,255,255,.1); }
+    .hero-note { margin-top: 25px; color: #bdcde0; font-size: .85rem; }
+    .hero-card {
+      background: rgba(255,255,255,.97); color: var(--ink); border-radius: 28px; padding: 28px;
+      box-shadow: 0 28px 70px rgba(0,0,0,.22); transform: rotate(1.5deg);
+      border: 1px solid rgba(255,255,255,.7);
+    }
+    .hero-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .mini-label { color: var(--blue); font-size: .72rem; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+    .level-mark { font-size: 3.5rem; line-height: 1; font-weight: 900; color: var(--navy); letter-spacing: -.08em; }
+    .hero-card h2 { margin: 15px 0 6px; color: var(--navy); font-size: 1.5rem; }
+    .hero-card p { color: var(--muted); margin: 0; }
+    .skill-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 23px; }
+    .skill { background: var(--soft); border-radius: 12px; padding: 11px 12px; font-size: .86rem; font-weight: 750; color: #33465e; }
+    .skill b { color: var(--gold-dark); margin-right: 7px; }
+    section { padding: 82px 0; }
+    .section-kicker { color: var(--blue); text-transform: uppercase; font-weight: 850; font-size: .76rem; letter-spacing: .17em; }
+    .section-title { color: var(--navy); font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.08; letter-spacing: -.04em; margin: 10px 0 13px; }
+    .section-intro { max-width: 680px; color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
+    .about-panel { background: var(--soft); padding: 32px; border-radius: var(--radius); border-left: 5px solid var(--gold); }
+    .about-panel blockquote { margin: 0; color: var(--navy); font-size: 1.55rem; font-weight: 850; line-height: 1.25; }
+    .about-panel p { color: var(--muted); margin-bottom: 0; }
+    .values { display: grid; gap: 17px; margin-top: 25px; }
+    .value { display: flex; gap: 14px; align-items: flex-start; }
+    .value-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: #fff4cf; color: #9b7412; flex: 0 0 auto; font-weight: 900; }
+    .value strong { color: var(--navy); display: block; }
+    .value span { color: var(--muted); font-size: .93rem; }
+    .courses { background: var(--soft); }
+    .course-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 35px; }
+    .course-card { background: white; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 8px 28px rgba(16,43,80,.045); }
+    .course-card .tag { display: inline-block; color: var(--blue); background: #edf4fb; border-radius: 999px; padding: 5px 11px; font-size: .72rem; font-weight: 850; letter-spacing: .1em; }
+    .course-card h3 { margin: 16px 0 7px; color: var(--navy); font-size: 1.55rem; }
+    .course-card p { color: var(--muted); margin: 0 0 18px; }
+    .course-card ul { padding-left: 19px; margin: 0; color: #43546a; }
+    .course-card li { margin: 7px 0; }
+    .materials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center; margin-top: 35px; }
+    .book-stack { min-height: 265px; display: grid; place-items: center; border-radius: var(--radius); background: linear-gradient(135deg, #eaf0f7, #f8f9fb); padding: 30px; }
+    .book { width: min(260px, 80%); background: linear-gradient(145deg, #17365f, #0d2342); color: white; padding: 27px 22px; border-radius: 7px 16px 16px 7px; box-shadow: 12px 16px 0 #d7b34a, 18px 24px 35px rgba(16,43,80,.2); transform: rotate(-5deg); text-align: center; }
+    .book small { color: #f2c64b; letter-spacing: .17em; font-weight: 800; }
+    .book strong { display: block; font-size: 2.7rem; margin: 15px 0 4px; letter-spacing: -.06em; }
+    .book span { font-size: .83rem; letter-spacing: .08em; }
+    .materials-copy p { color: var(--muted); }
+    .method { background: var(--navy); color: white; }
+    .method .section-title { color: white; }
+    .method .section-intro { color: #c5d3e4; }
+    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 35px; }
+    .method-card { border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.06); padding: 23px; border-radius: 18px; }
+    .method-card .number { color: var(--gold); font-weight: 900; font-size: .8rem; letter-spacing: .14em; }
+    .method-card h3 { margin: 9px 0 7px; }
+    .method-card p { margin: 0; color: #c5d3e4; font-size: .93rem; }
+    .contact-box { display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: center; padding: 35px; border-radius: 25px; background: linear-gradient(120deg, #f4f7fb, #fff8df); border: 1px solid #eee5c9; }
+    .contact-box h2 { color: var(--navy); margin: 0 0 8px; font-size: 1.8rem; }
+    .contact-box p { color: var(--muted); margin: 0; }
+    footer { background: #0b1d35; color: #c5d3e4; padding: 32px 0; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .footer-brand { color: white; font-weight: 850; }
+    .footer-small { font-size: .83rem; }
+    .notice { margin-top: 20px; padding: 13px 15px; border-radius: 12px; background: #fff8df; color: #735b19; font-size: .85rem; }
+    @media (max-width: 800px) {
+      .nav-links { display: none; position: absolute; top: 82px; left: 0; right: 0; padding: 20px; background: white; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 17px; }
+      .nav-links.open { display: flex; }
+      .menu-button { display: block; }
+      .nav-cta { display: none; }
+      .hero { padding: 66px 0 75px; }
+      .hero-grid, .about-grid, .materials-grid { grid-template-columns: 1fr; gap: 35px; }
+      .hero-card { max-width: 470px; transform: none; }
+      .course-grid { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr; }
+      .contact-box { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 460px) {
+      .container { width: min(100% - 28px, 1120px); }
+      .brand img { width: 48px; height: 48px; }
+      .brand-name { font-size: .88rem; }
+      .brand-tag { font-size: .64rem; }
+      .hero-card { padding: 22px; }
+      section { padding: 62px 0; }
+      .contact-box { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Bright Level English home">
+        <img src="assets/ble-logo.jpg" alt="Bright Level English original logo">
+        <span><span class="brand-name">BRIGHT LEVEL ENGLISH</span><span class="brand-tag">LEARN SMART. SPEAK BRIGHT.</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About BLE</a>
+        <a href="#courses">Our Courses</a>
+        <a href="#materials">Our Books</a>
+        <a href="#method">Our Method</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Get information <span aria-hidden="true">↗</span></a>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Welcome to Bright Level English</div>
+          <h1>Build your future <span>with English.</span></h1>
+          <p class="hero-copy">Learn English with purpose, build confidence, and develop the skills to communicate with the world.</p>
+          <div class="hero-actions">
+            <a class="button" href="#courses">Explore our courses <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#about">Discover BLE</a>
+          </div>
+          <p class="hero-note">Learn Smart. Speak Bright.</p>
+        </div>
+        <div class="hero-card" aria-label="English learning skills">
+          <div class="hero-card-top">
+            <span class="mini-label">Your learning journey</span>
+            <span class="level-mark">A1<span style="color:#e3b72e">+</span></span>
+          </div>
+          <h2>English opens new doors.</h2>
+          <p>Build your foundation and keep moving forward, one level at a time.</p>
+          <div class="skill-list">
+            <div class="skill"><b>01</b> Listening</div>
+            <div class="skill"><b>02</b> Speaking</div>
+            <div class="skill"><b>03</b> Reading</div>
+            <div class="skill"><b>04</b> Writing</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <div class="section-kicker">Who we are</div>
+          <h2 class="section-title">Learning with purpose. Growing with confidence.</h2>
+          <p class="section-intro">Bright Level English is an English-learning project focused on clear instruction, meaningful practice, and steady progress.</p>
+        </div>
+        <div>
+          <div class="about-panel">
+            <blockquote>“Quality before quantity.”</blockquote>
+            <p>We believe students deserve lessons and learning materials that are carefully prepared, understandable, and useful in real communication.</p>
+          </div>
+          <div class="values">
+            <div class="value"><div class="value-icon">✓</div><div><strong>Clear learning goals</strong><span>Every lesson should have a purpose students can understand.</span></div></div>
+            <div class="value"><div class="value-icon">✦</div><div><strong>Practical communication</strong><span>We connect vocabulary and grammar with everyday situations.</span></div></div>
+            <div class="value"><div class="value-icon">↗</div><div><strong>Continuous progress</strong><span>We encourage practice, feedback, and confidence at every stage.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="courses" id="courses">
+      <div class="container">
+        <div class="section-kicker">Learning pathways</div>
+        <h2 class="section-title">Our English courses</h2>
+        <p class="section-intro">Explore the first stages of the BLE learning pathway. Course details, schedules, and enrollment availability can be added as the program grows.</p>
+        <div class="course-grid">
+          <article class="course-card">
+            <span class="tag">A1 · COMPLETED PROGRAM</span>
+            <h3>Basic Beginner</h3>
+            <p>Build a strong foundation in English through essential vocabulary, basic grammar, and everyday communication.</p>
+            <ul><li>Basic Beginner 1</li><li>Basic Beginner 2</li><li>Basic Beginner 3</li></ul>
+          </article>
+          <article class="course-card">
+            <span class="tag">A2 · ELEMENTARY</span>
+            <h3>Elementary 1</h3>
+            <p>Continue developing communication skills, expand vocabulary, and use English in a wider range of everyday contexts.</p>
+            <ul><li>Unit 10 — Helping Out</li><li>Unit 11 — Fun Outdoors</li><li>Unit 12 — Land and Sea</li><li>Unit 13 — Appearance</li><li>Unit 14 — Things to Do</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="materials">
+      <div class="container">
+        <div class="section-kicker">Created for learning</div>
+        <h2 class="section-title">Our learning materials</h2>
+        <div class="materials-grid">
+          <div class="book-stack">
+            <div class="book"><small>BRIGHT LEVEL ENGLISH</small><strong>A2</strong><span>ELEMENTARY 1</span></div>
+          </div>
+          <div class="materials-copy">
+            <h3 style="color:var(--navy);font-size:1.55rem">A learning experience with its own identity.</h3>
+            <p>BLE develops its own learning materials to support classroom lessons, guided practice, and independent review.</p>
+            <p>Our books are organized by levels and units, with activities designed to help students strengthen their English step by step.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="method" id="method">
+      <div class="container">
+        <div class="section-kicker" style="color:var(--gold)">The BLE approach</div>
+        <h2 class="section-title">Learn. Practice. Communicate.</h2>
+        <p class="section-intro">A balanced learning process gives students opportunities to understand English and use it with growing confidence.</p>
+        <div class="method-grid">
+          <article class="method-card"><div class="number">01 / UNDERSTAND</div><h3>Learn the essentials</h3><p>Explore vocabulary, grammar, pronunciation, and useful language patterns.</p></article>
+          <article class="method-card"><div class="number">02 / PRACTICE</div><h3>Build your skills</h3><p>Practice through listening, reading, writing, and guided activities.</p></article>
+          <article class="method-card"><div class="number">03 / COMMUNICATE</div><h3>Use your English</h3><p>Develop confidence through conversations and practical communication tasks.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div><h2>Ready to learn with BLE?</h2><p>Contact Bright Level English to ask about courses, learning materials, and enrollment.</p></div>
+          <a class="button" href="mailto:">Contact us <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="notice"><strong>Website setup note:</strong> Before publishing, add the academy's approved WhatsApp number, email address, location or service area, and current enrollment details. The contact button is a placeholder until those details are provided.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><div class="footer-brand">BRIGHT LEVEL ENGLISH</div><div class="footer-small">Learn Smart. Speak Bright.</div></div>
+      <div class="footer-small">© <span id="year"></span> Bright Level English. All rights reserved.</div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navLinks = document.getElementById('navLinks');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
